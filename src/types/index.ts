@@ -70,6 +70,8 @@ export type LibraryStackParamList = {
   GameDetail: { gameId: string };
   AddGame: undefined;
   Achievements: { gameId: string };
+  Wiki: { config: any };
+  WikiPage: { wiki: string; title: string; config: any };
 };
 
 export type ExploreStackParamList = {

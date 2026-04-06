@@ -11,6 +11,8 @@ import LibraryScreen from '../screens/LibraryScreen';
 import AddGameScreen from '../screens/AddGameScreen';
 import GameDetailScreen from '../screens/GameDetailScreen';
 import AchievementsScreen from '../screens/AchievementsScreen';
+import WikiScreen from '../screens/WikiScreen';
+import WikiPageScreen from '../screens/WikiPageScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import LinkSteamScreen from '../screens/LinkSteamScreen';
@@ -36,6 +38,8 @@ function LibraryStackScreen() {
       <LibraryStack.Screen name="AddGame" component={AddGameScreen} />
       <LibraryStack.Screen name="GameDetail" component={GameDetailScreen} />
       <LibraryStack.Screen name="Achievements" component={AchievementsScreen} />
+      <LibraryStack.Screen name="Wiki" component={WikiScreen} />
+      <LibraryStack.Screen name="WikiPage" component={WikiPageScreen} />
     </LibraryStack.Navigator>
   );
 }
