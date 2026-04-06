@@ -13,9 +13,11 @@ import GameDetailScreen from '../screens/GameDetailScreen';
 import AchievementsScreen from '../screens/AchievementsScreen';
 import WikiScreen from '../screens/WikiScreen';
 import WikiPageScreen from '../screens/WikiPageScreen';
+import MapScreen from '../screens/MapScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import LinkSteamScreen from '../screens/LinkSteamScreen';
+import CacheSettingsScreen from '../screens/CacheSettingsScreen';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
@@ -40,6 +42,7 @@ function LibraryStackScreen() {
       <LibraryStack.Screen name="Achievements" component={AchievementsScreen} />
       <LibraryStack.Screen name="Wiki" component={WikiScreen} />
       <LibraryStack.Screen name="WikiPage" component={WikiPageScreen} />
+      <LibraryStack.Screen name="Map" component={MapScreen} />
     </LibraryStack.Navigator>
   );
 }
@@ -57,6 +60,7 @@ function ProfileStackScreen() {
     <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
       <ProfileStack.Screen name="Profile" component={ProfileScreen} />
       <ProfileStack.Screen name="LinkSteam" component={LinkSteamScreen} />
+      <ProfileStack.Screen name="CacheSettings" component={CacheSettingsScreen} />
     </ProfileStack.Navigator>
   );
 }

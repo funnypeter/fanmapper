@@ -72,6 +72,7 @@ export type LibraryStackParamList = {
   Achievements: { gameId: string };
   Wiki: { config: any };
   WikiPage: { wiki: string; title: string; config: any };
+  Map: { wiki: string; mapName: string; gameTitle: string };
 };
 
 export type ExploreStackParamList = {
@@ -83,4 +84,5 @@ export type ProfileStackParamList = {
   Profile: undefined;
   Settings: undefined;
   LinkSteam: undefined;
+  CacheSettings: undefined;
 };
