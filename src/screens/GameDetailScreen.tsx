@@ -8,14 +8,16 @@ import { Card } from '../components/Card';
 import { Button } from '../components/Button';
 import { useTheme } from '../theme/ThemeContext';
 import { useLibrary } from '../hooks/useLibrary';
+import { findWikiConfig } from '../data/gameRegistry';
 import type { GameStatus, LibraryStackParamList } from '../types';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const STATUSES: GameStatus[] = ['playing', 'backlog', 'wishlist', 'completed', 'dropped'];
 
 export default function GameDetailScreen() {
   const { theme } = useTheme();
   const route = useRoute<RouteProp<LibraryStackParamList, 'GameDetail'>>();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<LibraryStackParamList>>();
   const { allGames, updateGame, removeGame } = useLibrary();
 
   const game = allGames.find((g) => g.gameId === route.params.gameId);
@@ -89,6 +91,39 @@ export default function GameDetailScreen() {
         {game.genres.length > 0 && (
           <Text variant="caption" style={{ marginTop: 4 }}>{game.genres.join(' / ')}</Text>
         )}
+
+        {/* Quick links */}
+        {(() => {
+          const wikiConfig = findWikiConfig(game.title);
+          if (!wikiConfig) return null;
+          return (
+            <View style={styles.quickLinks}>
+              <TouchableOpacity
+                style={[styles.quickLink, { backgroundColor: theme.colors.primary + '15' }]}
+                onPress={() => navigation.navigate('Wiki', { config: wikiConfig })}
+              >
+                <Ionicons name="book" size={20} color={theme.colors.primary} />
+                <Text variant="caption" style={{ marginTop: 4, color: theme.colors.primary, fontWeight: '600' }}>Wiki</Text>
+              </TouchableOpacity>
+              {wikiConfig.maps.length > 0 && (
+                <TouchableOpacity
+                  style={[styles.quickLink, { backgroundColor: theme.colors.accent + '15' }]}
+                  onPress={() => navigation.navigate('Map', { wiki: wikiConfig.wiki, mapName: wikiConfig.maps[0], gameTitle: wikiConfig.gameTitle })}
+                >
+                  <Ionicons name="map" size={20} color={theme.colors.accent} />
+                  <Text variant="caption" style={{ marginTop: 4, color: theme.colors.accent, fontWeight: '600' }}>Map</Text>
+                </TouchableOpacity>
+              )}
+              <TouchableOpacity
+                style={[styles.quickLink, { backgroundColor: theme.colors.xp + '15' }]}
+                onPress={() => navigation.navigate('Achievements', { gameId: game.gameId })}
+              >
+                <Ionicons name="trophy" size={20} color={theme.colors.xp} />
+                <Text variant="caption" style={{ marginTop: 4, color: theme.colors.xp, fontWeight: '600' }}>Trophies</Text>
+              </TouchableOpacity>
+            </View>
+          );
+        })()}
 
         {/* Status picker */}
         <Card style={{ marginTop: 20 }}>
@@ -174,6 +209,8 @@ const styles = StyleSheet.create({
   hero: { width: '100%', height: 250 },
   content: { padding: 24 },
   statusRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  quickLinks: { flexDirection: 'row', gap: 12, marginTop: 16 },
+  quickLink: { flex: 1, alignItems: 'center', paddingVertical: 14, borderRadius: 12 },
   statusChip: { paddingHorizontal: 14, paddingVertical: 8, borderRadius: 20, borderWidth: 1 },
   playtimeEdit: { flexDirection: 'row', alignItems: 'center' },
   playtimeInput: { flex: 1, borderWidth: 1, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 10, fontSize: 16 },
