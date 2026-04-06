@@ -8,6 +8,8 @@ import type { RootTabParamList, HomeStackParamList, LibraryStackParamList, Explo
 
 import HomeScreen from '../screens/HomeScreen';
 import LibraryScreen from '../screens/LibraryScreen';
+import AddGameScreen from '../screens/AddGameScreen';
+import GameDetailScreen from '../screens/GameDetailScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
@@ -29,6 +31,8 @@ function LibraryStackScreen() {
   return (
     <LibraryStack.Navigator screenOptions={{ headerShown: false }}>
       <LibraryStack.Screen name="Library" component={LibraryScreen} />
+      <LibraryStack.Screen name="AddGame" component={AddGameScreen} />
+      <LibraryStack.Screen name="GameDetail" component={GameDetailScreen} />
     </LibraryStack.Navigator>
   );
 }
