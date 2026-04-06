@@ -1,15 +1,19 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, StyleSheet, ScrollView, Alert, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Text } from '../components/Text';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import { useTheme } from '../theme/ThemeContext';
 import { useAuthContext } from '../contexts/AuthContext';
 import { Ionicons } from '@expo/vector-icons';
+import type { ProfileStackParamList } from '../types';
 
 export default function ProfileScreen() {
   const { theme } = useTheme();
   const { user, signOut } = useAuthContext();
+  const navigation = useNavigation<NativeStackNavigationProp<ProfileStackParamList>>();
 
   async function handleSignOut() {
     try {
@@ -51,7 +55,14 @@ export default function ProfileScreen() {
 
         <Card style={{ marginTop: 16 }}>
           <Text variant="body" style={{ fontWeight: '600', marginBottom: 12 }}>Linked Platforms</Text>
-          <Text variant="secondary">No platforms linked yet</Text>
+          <TouchableOpacity
+            style={[styles.platformBtn, { backgroundColor: theme.colors.surfaceElevated, borderColor: theme.colors.border }]}
+            onPress={() => navigation.navigate('LinkSteam')}
+          >
+            <Ionicons name="logo-steam" size={20} color={theme.colors.text} />
+            <Text variant="body" style={{ marginLeft: 10, flex: 1 }}>Steam</Text>
+            <Ionicons name="chevron-forward" size={18} color={theme.colors.textMuted} />
+          </TouchableOpacity>
         </Card>
 
         <Button
@@ -87,4 +98,5 @@ const styles = StyleSheet.create({
   },
   statRow: { flexDirection: 'row', justifyContent: 'space-around' },
   statItem: { alignItems: 'center' },
+  platformBtn: { flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderRadius: 12, padding: 14, marginTop: 8 },
 });

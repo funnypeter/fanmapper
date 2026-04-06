@@ -69,6 +69,7 @@ export type LibraryStackParamList = {
   Library: undefined;
   GameDetail: { gameId: string };
   AddGame: undefined;
+  Achievements: { gameId: string };
 };
 
 export type ExploreStackParamList = {
@@ -79,4 +80,5 @@ export type ExploreStackParamList = {
 export type ProfileStackParamList = {
   Profile: undefined;
   Settings: undefined;
+  LinkSteam: undefined;
 };

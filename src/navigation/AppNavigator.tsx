@@ -10,8 +10,10 @@ import HomeScreen from '../screens/HomeScreen';
 import LibraryScreen from '../screens/LibraryScreen';
 import AddGameScreen from '../screens/AddGameScreen';
 import GameDetailScreen from '../screens/GameDetailScreen';
+import AchievementsScreen from '../screens/AchievementsScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import LinkSteamScreen from '../screens/LinkSteamScreen';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
@@ -33,6 +35,7 @@ function LibraryStackScreen() {
       <LibraryStack.Screen name="Library" component={LibraryScreen} />
       <LibraryStack.Screen name="AddGame" component={AddGameScreen} />
       <LibraryStack.Screen name="GameDetail" component={GameDetailScreen} />
+      <LibraryStack.Screen name="Achievements" component={AchievementsScreen} />
     </LibraryStack.Navigator>
   );
 }
@@ -49,6 +52,7 @@ function ProfileStackScreen() {
   return (
     <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
       <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+      <ProfileStack.Screen name="LinkSteam" component={LinkSteamScreen} />
     </ProfileStack.Navigator>
   );
 }
