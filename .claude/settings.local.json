@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx create-expo-app@latest . --template blank-typescript)",
+      "Bash(npx create-expo-app@latest temp-expo --template blank-typescript)",
+      "Bash(for f:*)",
+      "Bash(do cp:*)",
+      "Bash(done)",
+      "Bash(rm -rf \"C:/Users/funny/OneDrive/Documents/Claude/FanMapper/temp-expo\")",
+      "Bash(npx expo:*)",
+      "Bash(./node_modules/.bin/expo install:*)",
+      "Bash(node node_modules/expo/bin/cli.js install @react-navigation/native @react-navigation/bottom-tabs @react-navigation/native-stack react-native-screens react-native-safe-area-context expo-sqlite zustand @tanstack/react-query @expo/vector-icons)"
+    ]
+  }
+}
