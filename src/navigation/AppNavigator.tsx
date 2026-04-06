@@ -17,7 +17,9 @@ import MapScreen from '../screens/MapScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import LinkSteamScreen from '../screens/LinkSteamScreen';
+import LinkPSNScreen from '../screens/LinkPSNScreen';
 import CacheSettingsScreen from '../screens/CacheSettingsScreen';
+import LegalScreen from '../screens/LegalScreen';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
@@ -60,7 +62,9 @@ function ProfileStackScreen() {
     <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
       <ProfileStack.Screen name="Profile" component={ProfileScreen} />
       <ProfileStack.Screen name="LinkSteam" component={LinkSteamScreen} />
+      <ProfileStack.Screen name="LinkPSN" component={LinkPSNScreen} />
       <ProfileStack.Screen name="CacheSettings" component={CacheSettingsScreen} />
+      <ProfileStack.Screen name="Legal" component={LegalScreen} />
     </ProfileStack.Navigator>
   );
 }

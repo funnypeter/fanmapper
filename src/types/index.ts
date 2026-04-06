@@ -84,5 +84,7 @@ export type ProfileStackParamList = {
   Profile: undefined;
   Settings: undefined;
   LinkSteam: undefined;
+  LinkPSN: undefined;
   CacheSettings: undefined;
+  Legal: undefined;
 };

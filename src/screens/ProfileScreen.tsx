@@ -63,6 +63,34 @@ export default function ProfileScreen() {
             <Text variant="body" style={{ marginLeft: 10, flex: 1 }}>Steam</Text>
             <Ionicons name="chevron-forward" size={18} color={theme.colors.textMuted} />
           </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.platformBtn, { backgroundColor: theme.colors.surfaceElevated, borderColor: theme.colors.border }]}
+            onPress={() => navigation.navigate('LinkPSN')}
+          >
+            <Ionicons name="logo-playstation" size={20} color={theme.colors.text} />
+            <Text variant="body" style={{ marginLeft: 10, flex: 1 }}>PlayStation</Text>
+            <Ionicons name="chevron-forward" size={18} color={theme.colors.textMuted} />
+          </TouchableOpacity>
+        </Card>
+
+        <Card style={{ marginTop: 16 }}>
+          <Text variant="body" style={{ fontWeight: '600', marginBottom: 12 }}>Settings</Text>
+          <TouchableOpacity
+            style={[styles.platformBtn, { backgroundColor: theme.colors.surfaceElevated, borderColor: theme.colors.border }]}
+            onPress={() => navigation.navigate('CacheSettings')}
+          >
+            <Ionicons name="server" size={20} color={theme.colors.text} />
+            <Text variant="body" style={{ marginLeft: 10, flex: 1 }}>Offline Cache</Text>
+            <Ionicons name="chevron-forward" size={18} color={theme.colors.textMuted} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.platformBtn, { backgroundColor: theme.colors.surfaceElevated, borderColor: theme.colors.border }]}
+            onPress={() => navigation.navigate('Legal')}
+          >
+            <Ionicons name="document-text" size={20} color={theme.colors.text} />
+            <Text variant="body" style={{ marginLeft: 10, flex: 1 }}>Legal & Attribution</Text>
+            <Ionicons name="chevron-forward" size={18} color={theme.colors.textMuted} />
+          </TouchableOpacity>
         </Card>
 
         <Button
